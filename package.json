@@ -1,0 +1,23 @@
+{
+  "name": "om-scheduler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalitsom/om-scheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalitsom/om-scheduler/issues"
+  },
+  "homepage": "https://github.com/lalitsom/om-scheduler#readme",
+  "dependencies": {
+    "http": "0.0.1-security",
+    "simple-node-logger": "^18.12.24"
+  }
+}
