@@ -1,7 +1,8 @@
 var fs = require('fs');
 var http = require('http');
-const { start } = require('repl');
+var child_process = require('child_process');
 
+var spawn = require('child_process').spawn;
 destPath = "./serve/murli_audio.mp3";
 srcPath = "http://www.babamurli.com/01.%20Daily%20Murli/01.%20Hindi/10.%20Hindi%20Murli%20-%20Mumbai/datePlaceHolder.mp3";
 
@@ -46,7 +47,22 @@ downloadFile = (src, dest) => {
 }
 
 updateGit = () => {
+
     log("updating git...")
+    ls = spawn('cmd.exe', ['/c', 'update.bat']);
+
+    ls.stdout.on('data', function (data) {
+        console.log('stdout: ' + data);
+    });
+
+    ls.stderr.on('data', function (data) {
+        console.log('stderr: ' + data);
+    });
+
+    ls.on('exit', function (code) {
+        console.log('child process exited with code ' + code);
+    });
+
 }
 
 
@@ -58,7 +74,7 @@ alreadyDownloadedToday = (path) => {
     try {
         if (fs.existsSync(path)) {
             const stats = fs.statSync(path);
-            if(new Date().getDate() == stats.mtime.getDate()){
+            if (new Date().getDate() == stats.mtime.getDate()) {
                 return true;
             }
         }
